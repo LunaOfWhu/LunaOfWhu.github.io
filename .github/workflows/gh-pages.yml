@@ -1,0 +1,33 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 或者 master，视你的默认分支而定
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Build and Deploy
+        run: |
+          bundle exec jekyll build
+          touch ./_site/.nojekyll
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Build site"
+          git push origin HEAD:gh-pages --force
