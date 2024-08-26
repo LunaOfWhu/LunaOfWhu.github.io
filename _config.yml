@@ -1,0 +1,18 @@
+title: My Blog
+description: >- # 文章描述
+  A blog showcasing my daily writings.
+baseurl: "" # 不要添加斜杠结尾
+url: "https://lunaofwhu.github.io/" # 填写你的GitHub页面URL
+
+# 主题设置
+theme: minimal-mistakes-jekyll
+
+# 构建设置
+markdown: kramdown
+highlighter: rouge
+
+remote_theme: "mmistakes/minimal-mistakes"
+plugins:
+  - jekyll-remote-theme # 增加这个插件以支持远程主题
+
+# 其他设置，比如Google Analytics、Disqus、社交媒体链接等
